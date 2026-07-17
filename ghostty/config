@@ -1,0 +1,12 @@
+font-family = Code New Roman
+font-size = 16
+theme = Dark Modern
+foreground = #ffffff
+
+shell-integration-features = ssh-env,ssh-terminfo
+
+# Close the focused split/tab/window (like typing `exit`)
+keybind = cmd+e=close_surface
+
+# Don't prompt when closing a surface with a running process
+confirm-close-surface = false

@@ -1,0 +1,78 @@
+{
+    "window.commandCenter": true,
+    "workbench.colorTheme": "Default Dark Modern",
+    "zig.zls.enabled": "on",
+    "[python]": {
+        // "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        // "editor.codeActionsOnSave": {
+        //     "source.fixAll.ruff": "explicit",
+        //     "source.organizeImports.ruff": "explicit"
+        // }
+    },
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust-analyzer",
+        "editor.formatOnSave": true,
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features",
+        "editor.formatOnSave": true
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features",
+        "editor.formatOnSave": true
+    },
+    "remote.SSH.remotePlatform": {
+        "modal-dev": "linux",
+        "encfs-run": "linux"
+    },
+    "remote.autoForwardPortsSource": "hybrid",
+    "window.autoDetectColorScheme": false,
+    "vim.normalModeKeyBindings": [
+        {
+            "before": [
+                "g",
+                "b"
+            ],
+            "after": [
+                "<C-o>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "{"
+            ],
+            "after": [
+                "}"
+            ]
+        },
+        {
+            "before": [
+                "}"
+            ],
+            "after": [
+                "{"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "{"
+            ],
+            "after": [
+                "}"
+            ]
+        },
+        {
+            "before": [
+                "}"
+            ],
+            "after": [
+                "{"
+            ]
+        }
+    ]
+}

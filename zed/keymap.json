@@ -1,0 +1,49 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    // Swap { and } so they match the physical layout ({ on j = down,
+    // } on k = up). Mirrors the VSCodeVim swap in cursor/settings.json.
+    // VimControl covers normal + visual + operator-pending modes.
+    "context": "VimControl && !menu",
+    "bindings": {
+      "{": "vim::EndOfParagraph",
+      "}": "vim::StartOfParagraph",
+    },
+  },
+  {
+    // Ghostty-style split management (mirrors cursor/keybindings.json):
+    //   cmd-d          move current file into a split on the right (moves, not clones)
+    //   cmd-[ / cmd-]  move focus between split panes
+    //   cmd-e          close the current split (all its tabs)
+    // Bound in Editor context so they override the defaults (cmd-d =
+    // SelectNext, cmd-[ / cmd-] = outdent/indent); the pane::/workspace::
+    // actions bubble up to their handlers. Leaves cmd-( / cmd-) tab nav alone.
+    // MoveItemToPaneInDirection defaults: direction=Right, clone=false (move),
+    // and creates the split if none exists yet.
+    "context": "Editor",
+    "bindings": {
+      "cmd-d": "workspace::MoveItemToPaneInDirection",
+      "cmd-[": "workspace::ActivatePaneLeft",
+      "cmd-]": "workspace::ActivatePaneRight",
+      "cmd-e": "pane::CloseAllItems",
+    },
+  },
+]

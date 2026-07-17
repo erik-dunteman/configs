@@ -1,0 +1,31 @@
+export PATH="$HOME/.local/bin:$PATH"
+
+VIRTUAL_ENV_DISABLE_PROMPT=1
+_set_prompt() {
+    local venv=""
+    [[ -n "$VIRTUAL_ENV" ]] && venv="(${VIRTUAL_ENV:t}) "
+    PROMPT="
+${venv}%F{214}%~%f %# "
+}
+precmd_functions+=(_set_prompt)
+
+bindkey -v
+
+# bun completions
+[ -s "/Users/erik/.bun/_bun" ] && source "/Users/erik/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+alias yolo="claude --dangerously-skip-permissions"
+
+# make `code` open Zed
+alias code="/Applications/Zed.app/Contents/MacOS/cli"
+
+# opencode
+export PATH=/Users/erik/.opencode/bin:$PATH
