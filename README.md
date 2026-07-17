@@ -12,13 +12,12 @@ config. To apply, copy the file back to its destination (paths listed below).
 | `shell/bashrc` | `~/.bashrc` | Local bash (rarely used on laptop) |
 | `shell/zprofile` | `~/.zprofile` | brew shellenv + OrbStack init |
 | `shell/profile` | `~/.profile` | cargo env |
-| `shell/devbox.bashrc` | `~/.bashrc` on `modal-dev` | Devbox bash config |
+| `shell/devbox.bashrc` | appended to `~/.bashrc` on `modal-dev` | Devbox overlay (append, don't replace) |
 | `ghostty/config` | `~/Library/Application Support/com.mitchellh.ghostty/config.ghostty` | Ghostty terminal |
 | `karabiner/karabiner.json` | `~/.config/karabiner/karabiner.json` | Karabiner-Elements |
 | `cursor/keybindings.json` | `~/Library/Application Support/Cursor/User/keybindings.json` | Cursor keybindings |
 | `cursor/settings.json` | `~/Library/Application Support/Cursor/User/settings.json` | Cursor settings (incl. vim mode) |
 | `zed/keymap.json` | `~/.config/zed/keymap.json` | Zed keymap (vim `{`/`}` swap) |
-| `zed/settings.json` | `~/.config/zed/settings.json` | Zed settings |
 | `macos/keyboard.sh` | run once | Key-repeat + press-and-hold defaults |
 
 ---
@@ -35,12 +34,16 @@ config. To apply, copy the file back to its destination (paths listed below).
   - `code` → **opens Zed**, not VSCode.
 
 ### Shell — devbox (`devbox.bashrc`, bash on `modal-dev`)
-Remote runs **bash**, not zsh. 
-
+Remote runs **bash**, not zsh. This file is **not** a full `~/.bashrc` — it's a
+non-destructive overlay meant to be **appended** on top of the devbox's existing
+bashrc. Everything else the box need comes from the default bashrc and is deliberately not tracked here.
+The only things carried over from local are:
 
 - `set -o vi` — vi mode parity.
 - Same prompt idea (cwd in **green** `38;5;34` here vs orange locally) + venv.
 - `yolo` → `claude --dangerously-skip-permissions`.
+
+Apply with: `cat shell/devbox.bashrc >> ~/.bashrc` on devbox
 
 ### Ghostty (`ghostty/config`)
 - `cmd+e` → `close_surface` (close focused split/tab/window, like typing `exit`).
