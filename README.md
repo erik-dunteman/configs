@@ -12,7 +12,7 @@ config. To apply, copy the file back to its destination (paths listed below).
 | `shell/bashrc` | `~/.bashrc` | Local bash (rarely used on laptop) |
 | `shell/zprofile` | `~/.zprofile` | brew shellenv + OrbStack init |
 | `shell/profile` | `~/.profile` | cargo env |
-| `shell/devbox.bashrc` | appended to `~/.bashrc` on `modal-dev` | Devbox overlay (append, don't replace) |
+| `shell/devbox.bashrc` | appended to `~/.bashrc` on devbox | Devbox overlay (append, don't replace) |
 | `ghostty/config` | `~/Library/Application Support/com.mitchellh.ghostty/config.ghostty` | Ghostty terminal |
 | `karabiner/karabiner.json` | `~/.config/karabiner/karabiner.json` | Karabiner-Elements |
 | `cursor/keybindings.json` | `~/Library/Application Support/Cursor/User/keybindings.json` | Cursor keybindings |
@@ -33,7 +33,7 @@ config. To apply, copy the file back to its destination (paths listed below).
   - `yolo` → `claude --dangerously-skip-permissions`
   - `code` → **opens Zed**, not VSCode.
 
-### Shell — devbox (`devbox.bashrc`, bash on `modal-dev`)
+### Shell — devbox (`devbox.bashrc`, bash on devbox)
 Remote runs **bash**, not zsh. This file is **not** a full `~/.bashrc` — it's a
 non-destructive overlay meant to be **appended** on top of the devbox's existing
 bashrc. Everything else the box need comes from the default bashrc and is deliberately not tracked here.
@@ -101,7 +101,3 @@ Zed's own `keymap.json`.
   - `cmd-e` → `pane::CloseAllItems` — closes the current split (all its tabs),
     like Ghostty `close_surface` / Cursor `closeGroup`.
   - `cmd-(` / `cmd-)` tab navigation is left as-is (matches Chrome behavior).
-
-**Settings** (`zed/settings.json`): `vim_mode: true`, `base_keymap: VSCode`,
-dark theme (Gruvbox Dark), minimap always shown, and a `modal-dev` SSH
-connection.
