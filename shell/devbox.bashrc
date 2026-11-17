@@ -13,6 +13,15 @@ set -o vi
 # local zsh prompt, which is orange). VIRTUAL_ENV_DISABLE_PROMPT so we render
 # the venv ourselves.
 export VIRTUAL_ENV_DISABLE_PROMPT=1
+export VISUAL=nvim
 PS1='\n${VIRTUAL_ENV:+(${VIRTUAL_ENV##*/}) }\[\e[38;5;34m\]\w\[\e[0m\] \$ '
 
 alias yolo='claude --dangerously-skip-permissions'
+
+# Atuin history search (install Atuin and copy atuin/config.toml first).
+if [ -f "$HOME/.atuin/bin/env" ]; then
+    . "$HOME/.atuin/bin/env"
+fi
+if command -v atuin >/dev/null 2>&1; then
+    eval "$(atuin init bash)"
+fi

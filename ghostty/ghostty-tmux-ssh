@@ -1,0 +1,29 @@
+#!/bin/sh
+set -eu
+
+# Only the tmux pane that owns this SSH connection forwards its Cmd keys.
+tmux set-option -p -t "$TMUX_PANE" @ghostty_remote 1
+cleanup() {
+    ssh_status=$?
+    # A lost SSH client cannot send tmux's normal screen/mouse teardown.
+    # Reset the local pane so remote borders and mouse reporting don't linger.
+    if [ "$ssh_status" -ne 0 ]; then
+        printf '\033[?1049l'
+        tmux send-keys -R -t "$TMUX_PANE" 2>/dev/null || :
+    fi
+    tmux set-option -pu -t "$TMUX_PANE" @ghostty_remote 2>/dev/null || :
+}
+trap cleanup EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
+
+# Keep Ghostty's SSH terminfo/environment handling when available.
+# Short keepalives return a dead connection to the local shell promptly.
+if [ -n "${GHOSTTY_BIN_DIR:-}" ] && [ -x "$GHOSTTY_BIN_DIR/ghostty" ]; then
+    "$GHOSTTY_BIN_DIR/ghostty" +ssh -- -t \
+        -o ServerAliveInterval=10 -o ServerAliveCountMax=3 \
+        modal-dev .local/bin/ghostty-tmux-remote
+else
+    ssh -t -o ServerAliveInterval=10 -o ServerAliveCountMax=3 \
+        modal-dev .local/bin/ghostty-tmux-remote
+fi

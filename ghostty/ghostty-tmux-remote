@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+
+# Every managed SSH connection joins this same remote workspace.
+# Do not use attach -d: multiple clients should see the same panes.
+exec tmux -L ghostty -f "$HOME/.config/tmux/ghostty-remote.conf" \
+    new-session -A -s devbox

@@ -55,6 +55,26 @@
             "after": [
                 "{"
             ]
+        },
+        // Backward word-search on '+' instead of the default '#'. On the
+        // custom keyboard layout '+' sits directly left of '*' (forward
+        // word-search), mirroring the physical keys. NonRecursive so '+'
+        // maps to the built-in '#' even though '#' itself is disabled below.
+        {
+            "before": [
+                "+"
+            ],
+            "after": [
+                "#"
+            ]
+        },
+        {
+            "before": [
+                "#"
+            ],
+            "after": [
+                "<Nop>"
+            ]
         }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [

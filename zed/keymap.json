@@ -46,4 +46,27 @@
       "cmd-e": "pane::CloseAllItems",
     },
   },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "g b": "pane::GoBack"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "unbind": {
+      "ctrl-o": "pane::GoBack"
+    }
+  },
+  {
+    // Backward word-search on '+' instead of the default '#'. On the custom
+    // keyboard layout '+' sits directly left of '*' (forward word-search),
+    // so the pair mirrors the physical keys. '#' is unbound so only '+'
+    // triggers it. Vim mode only ('*' = vim::MoveToNext is left as-is).
+    "context": "VimControl && !menu",
+    "bindings": {
+      "+": "vim::MoveToPrevious",
+      "#": null
+    }
+  }
 ]
