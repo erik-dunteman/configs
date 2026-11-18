@@ -1,0 +1,8 @@
+rex.bind("cmd+d", "pane.split", { direction = "right" })
+rex.bind("shift+cmd+d", "pane.split", { direction = "down" })
+rex.bind("cmd+]", "pane.focus_next")
+rex.bind("cmd+[", "pane.focus_previous")
+rex.bind("cmd+enter", "pane.send_key", { key = "cmd+enter" })
+rex.bind("cmd+e", "pane.close")
+rex.bind("copy/shift+[", "pane.copy_mode.move", { to = "paragraph_forward" })
+rex.bind("copy/shift+]", "pane.copy_mode.move", { to = "paragraph_backward" })

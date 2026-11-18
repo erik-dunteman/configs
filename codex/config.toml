@@ -1,0 +1,3 @@
+[tui]
+notification_method = "osc9"
+vim_mode_default = true
